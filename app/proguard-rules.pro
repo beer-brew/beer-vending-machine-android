@@ -67,12 +67,12 @@
 -keep class sun.misc.Unsafe { *; }
 # TODO change to match your package model
 # Keep non static or private fields of models so Gson can find their names
--keepclassmembers class com.thoughtworks.startup.data.model.** {
+-keepclassmembers class beer.brew.vendingmachine.data.model.** {
     *;
 }
 # TODO change to match your Retrofit services (only if using inner models withing the service)
 # Some models used by gson are inner classes inside the retrofit service
--keepclassmembers class com.thoughtworks.startup.data.remote.RibotsService$** {
+-keepclassmembers class beer.brew.vendingmachine.data.remote.RibotsService$** {
     !static !private <fields>;
 }
 

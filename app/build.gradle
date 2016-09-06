@@ -10,7 +10,7 @@ android {
     buildToolsVersion '23.0.3'
 
     defaultConfig {
-        applicationId 'com.thoughtworks.startup'
+        applicationId 'beer.brew.vendingmachine'
         minSdkVersion 17
         targetSdkVersion 23
         testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
@@ -58,12 +58,12 @@ android {
 
     productFlavors {
         beta {
-            applicationId 'com.thoughtworks.startup.beta'
+            applicationId 'beer.brew.vendingmachine.beta'
             versionName "1.0.0"
         }
 
         production {
-            applicationId 'com.thoughtworks.startup'
+            applicationId 'beer.brew.vendingmachine'
             versionName "1.0.0"
         }
     }
