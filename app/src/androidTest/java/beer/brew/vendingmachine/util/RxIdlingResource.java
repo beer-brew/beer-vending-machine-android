@@ -1,10 +1,9 @@
 package beer.brew.vendingmachine.util;
 
 import android.support.test.espresso.IdlingResource;
+import android.util.Log;
 
 import java.util.concurrent.atomic.AtomicInteger;
-
-import timber.log.Timber;
 
 /**
  * Espresso Idling resource that handles waiting for RxJava Observables executions.
@@ -16,6 +15,7 @@ import timber.log.Timber;
  */
 public class RxIdlingResource implements IdlingResource {
 
+    public static final String TAG = RxIdlingResource.class.getSimpleName();
     private final AtomicInteger mActiveSubscriptionsCount = new AtomicInteger(0);
     private ResourceCallback mResourceCallback;
 
@@ -36,14 +36,14 @@ public class RxIdlingResource implements IdlingResource {
 
     public void incrementActiveSubscriptionsCount() {
         int count = mActiveSubscriptionsCount.incrementAndGet();
-        Timber.i("Active subscriptions count increased to %d", count);
+        Log.i(TAG, "Active subscriptions count increased to " + count);
     }
 
     public void decrementActiveSubscriptionsCount() {
         int count = mActiveSubscriptionsCount.decrementAndGet();
-        Timber.i("Active subscriptions count decreased to %d", count);
+        Log.i(TAG, "Active subscriptions count decreased to " + count);
         if (isIdleNow()) {
-            Timber.i("There is no active subscriptions, transitioning to Idle");
+            Log.i(TAG, "There is no active subscriptions, transitioning to Idle");
             mResourceCallback.onTransitionToIdle();
         }
     }
