@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.squareup.otto.Bus;
 import beer.brew.vendingmachine.data.DataManager;
+import beer.brew.vendingmachine.data.remote.BeersService;
 import beer.brew.vendingmachine.data.remote.GitHubService;
 import beer.brew.vendingmachine.data.remote.RibotsService;
 import beer.brew.vendingmachine.data.remote.SignInService;
@@ -73,6 +74,12 @@ public class TestApplicationModule {
     @Singleton
     GitHubService provideGitHubService() {
         return mock(GitHubService.class);
+    }
+
+    @Provides
+    @Singleton
+    BeersService provideBeersServoce() {
+        return mock(BeersService.class);
     }
 
 }
