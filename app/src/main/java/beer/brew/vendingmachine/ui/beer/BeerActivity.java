@@ -36,6 +36,12 @@ public class BeerActivity extends BaseActivity implements BeerView {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        beerPresenter.loadBeers();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         beerPresenter.detachView();
