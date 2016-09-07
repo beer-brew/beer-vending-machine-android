@@ -8,12 +8,12 @@ public class Beer {
     private final String name;
 
     @SerializedName("price")
-    private String price;
+    private float price;
 
     @SerializedName("image")
     private final String image;
 
-    public Beer(String name, String price, String image) {
+    public Beer(String name, float price, String image) {
         this.name = name;
         this.price = price;
         this.image = image;
@@ -27,11 +27,11 @@ public class Beer {
         return name;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 }

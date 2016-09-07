@@ -39,7 +39,7 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
         Beer beer = beers.get(position);
         Picasso.with(context).load(beer.getImage()).into(holder.beerAvatarView);
         holder.beerNameView.setText(beer.getName());
-        holder.beerPriceView.setText(beer.getPrice());
+        holder.beerPriceView.setText(String.valueOf(beer.getPrice()));
     }
 
     @Override
