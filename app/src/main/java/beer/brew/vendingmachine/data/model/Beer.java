@@ -1,53 +1,35 @@
 package beer.brew.vendingmachine.data.model;
 
-import com.google.gson.annotations.SerializedName;
+public abstract class Beer {
 
-public class Beer {
+    protected String description = "No type beer";
+    protected Size size;
 
-    @SerializedName("name")
-    private final String name;
-
-    @SerializedName("price")
-    private float price;
-
-    @SerializedName("image")
-    private final String image;
-
-    private int size;
-
-    public static final int SIZE_SMALL = 0;
-    public static final int SIZE_MIDDLE = 1;
-    public static final int SIZE_BIG = 2;
-
-    public Beer(String name, String image, int size) {
-        this.name = name;
-        this.image = image;
-        this.size = size;
-        this.setPrice(size);
+    public String getDescription() {
+        return size.getDescription() + ", " + description;
     }
 
-    public String getImage() {
-        return image;
-    }
+    public abstract float cost();
 
-    public String getName() {
-        return name;
-    }
+    public enum Size {
+        SMALL((float) 3, "Small Cup"),
+        MIDDLE((float) 4, "Middle Cup"),
+        BIG((float) 5, "Big Cup");
 
-    public float getPrice() {
-        return price;
-    }
+        private String description;
+        private float price;
 
-    public int getSize() {
-        return size;
-    }
+        Size(float price, String description) {
+            this.price = price;
+            this.description = description;
+        }
 
-    private void setPrice(int size) {
-        switch (size) {
-            case SIZE_SMALL: price = (float) 3.0; break;
-            case SIZE_MIDDLE: price = (float) 4.0; break;
-            case SIZE_BIG: price = (float) 5.0; break;
-            default: break;
+        public float getPrice() {
+            return this.price;
+        }
+
+        public String getDescription() {
+            return this.description;
         }
     }
 }
