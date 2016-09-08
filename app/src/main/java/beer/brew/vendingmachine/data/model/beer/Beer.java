@@ -1,9 +1,15 @@
-package beer.brew.vendingmachine.data.model;
+package beer.brew.vendingmachine.data.model.beer;
 
-public abstract class Beer {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public abstract class Beer implements Serializable {
 
     protected String description = "No type beer";
     protected Size size;
+    protected float price;
 
     public String getDescription() {
         return size.getDescription() + ", " + description;
@@ -11,7 +17,7 @@ public abstract class Beer {
 
     public abstract float cost();
 
-    public enum Size {
+    public enum Size implements Serializable {
         SMALL((float) 3, "Small Cup"),
         MIDDLE((float) 4, "Middle Cup"),
         BIG((float) 5, "Big Cup");
