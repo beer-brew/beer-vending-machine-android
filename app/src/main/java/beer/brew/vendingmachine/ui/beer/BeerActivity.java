@@ -16,13 +16,8 @@ import butterknife.ButterKnife;
 
 public class BeerActivity extends BaseActivity implements BeerView {
 
-    @BindView(R.id.beer_recycler_view)
-    RecyclerView beerRecyclerView;
-
     @Inject
     BeerPresenter beerPresenter;
-
-    private BeerAdapter beerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,39 +27,16 @@ public class BeerActivity extends BaseActivity implements BeerView {
         ButterKnife.bind(this);
 
         beerPresenter.attachView(this);
-        initView();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        beerPresenter.loadBeers();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         beerPresenter.detachView();
-    }
-
-    @Override
-    public void showBeers(List<Beer> beers) {
-        beerAdapter.setBeers(beers);
-    }
-
-    @Override
-    public void showBeersEmpty() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    private void initView() {
-        beerAdapter = new BeerAdapter(this);
-        beerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        beerRecyclerView.setAdapter(beerAdapter);
     }
 }

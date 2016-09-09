@@ -9,14 +9,4 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="beer.brew.vendingmachine.ui.beer.BeerActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/beer_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="6dp"
-        android:paddingTop="6dp"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/item_beer" />
-
 </RelativeLayout>
