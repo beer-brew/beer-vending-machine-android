@@ -1,29 +1,34 @@
-package beer.brew.vendingmachine.data.model.beer;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package beer.brew.vendingmachine.data.model;
 
 import java.io.Serializable;
 
-public abstract class Beer implements Serializable {
+public class Beer implements Serializable {
 
-    protected String description = "No type beer";
-    protected Size size;
-    protected float price;
+    private static final String DESCRIPTION = "Beer";
 
-    public String getDescription() {
-        return size.getDescription() + ", " + description;
+    private final Size size;
+    private final float price;
+
+    public Beer(Size size) {
+        this.size = size;
+        this.price = size.getPrice();
     }
 
-    public abstract float cost();
+    public String getDescription() {
+        return size.getDescription() + ", " + DESCRIPTION;
+    }
+
+    public float cost() {
+        return this.price;
+    }
 
     public enum Size implements Serializable {
         SMALL((float) 3, "Small Cup"),
         MIDDLE((float) 4, "Middle Cup"),
         BIG((float) 5, "Big Cup");
 
-        private String description;
-        private float price;
+        private final String description;
+        private final float price;
 
         Size(float price, String description) {
             this.price = price;
