@@ -24,7 +24,7 @@ public class AssertUtils {
         return alipayConfig;
     }
 
-    private static <T extends Serializable>T getContentFromAssert(Context context, String assetsDir, Class<T> clz) throws Exception {
+    private static <T extends Serializable> T getContentFromAssert(Context context, String assetsDir, Class<T> clz) throws Exception {
         AssetManager assetManager = context.getAssets();
         InputStream is = assetManager.open(assetsDir);
         int size = is.available();
