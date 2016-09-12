@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import beer.brew.vendingmachine.injection.ActivityContext;
-
+import beer.brew.vendingmachine.payment.PaymentManager;
 import dagger.Module;
 import dagger.Provides;
 
@@ -26,5 +26,10 @@ public class ActivityModule {
     @ActivityContext
     Context providesContext() {
         return mActivity;
+    }
+
+    @Provides
+    PaymentManager providesPaymentManager() {
+        return new PaymentManager(mActivity);
     }
 }

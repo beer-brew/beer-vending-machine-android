@@ -2,20 +2,19 @@ package beer.brew.vendingmachine.ui.beer;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import com.alipay.sdk.app.PayTask;
 import javax.inject.Inject;
-
-import beer.brew.vendingmachine.R;
-import beer.brew.vendingmachine.data.model.AlipayResult;
-import beer.brew.vendingmachine.ui.base.BaseActivity;
 import butterknife.BindView;
+import beer.brew.vendingmachine.R;
+import beer.brew.vendingmachine.payment.data.AlipayResult;
+import beer.brew.vendingmachine.ui.base.BaseActivity;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.functions.Action1;
 
-public class BeerActivity extends BaseActivity implements BeerView, View.OnClickListener {
+public class BeerActivity extends BaseActivity implements BeerView {
 
     private static final String TAG = BeerActivity.class.getSimpleName();
 
@@ -31,9 +30,7 @@ public class BeerActivity extends BaseActivity implements BeerView, View.OnClick
         getActivityComponent().inject(this);
         setContentView(R.layout.activity_beer);
         ButterKnife.bind(this);
-
         beerPresenter.attachView(this);
-        buyBeerBtn.setOnClickListener(this);
     }
 
     @Override
@@ -62,19 +59,14 @@ public class BeerActivity extends BaseActivity implements BeerView, View.OnClick
         Log.i(TAG, "onPaymentFailure");
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.action_buy_beer:
-                beerPresenter.buy(new PayTask(BeerActivity.this))
-                        .subscribe(new Action1<AlipayResult>() {
-                            @Override
-                            public void call(AlipayResult alipayResult) {
-                                onPaymentFinished(alipayResult.getResultStatus());
-                            }
-                        });
-                break;
-            default: break;
-        }
+    @OnClick(R.id.action_buy_beer)
+    public void onBuyClick() {
+        beerPresenter.buy()
+                .subscribe(new Action1<AlipayResult>() {
+                    @Override
+                    public void call(AlipayResult alipayResult) {
+                        onPaymentFinished(alipayResult.getResultStatus());
+                    }
+                });
     }
 }
