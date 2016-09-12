@@ -1,56 +1,33 @@
 package beer.brew.vendingmachine.payment;
 
-import android.app.Activity;
 import android.content.Context;
-
-import com.alipay.sdk.app.PayTask;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 
 import beer.brew.vendingmachine.data.model.Beer;
 import beer.brew.vendingmachine.payment.data.AlipayOrder;
 import beer.brew.vendingmachine.payment.data.AlipayResult;
 import rx.Observable;
-import rx.functions.Func1;
 import util.sign.SignUtils;
 
 import static beer.brew.vendingmachine.data.model.Beer.Size.SMALL;
-import static rx.android.schedulers.AndroidSchedulers.mainThread;
-import static rx.schedulers.Schedulers.io;
 
-public class PaymentManager {
+public class OrderManager {
 
     private static final String ALIPAY_ORDER_TIMEOUT = "30m";
     private static final String ALIPAY_PRODUCT_CODE = "QUICK_MSECURITY_PAY";
 
     private Context context;
 
-    public PaymentManager(Context context) {
+    public OrderManager(Context context) {
         this.context = context;
     }
 
-    public Observable<AlipayResult> pay() {
+    public Observable<AlipayResult> getSignedOrder() {
         try {
             String orderInfo = generateSignedAlipayOrder(new Beer(SMALL));
-            final PayTask payTask = new PayTask((Activity) context);
-            return Observable.just(orderInfo)
-                    .subscribeOn(io())
-                    .map(new Func1<String, AlipayResult>() {
-                        @Override
-                        public AlipayResult call(String orderInfo) {
-                            Map<String, String> payResult = payTask.payV2(orderInfo, true);
-                            AlipayResult result = new AlipayResult(
-                                    payResult.get("resultStatus"),
-                                    payResult.get("result"),
-                                    payResult.get("memo"));
-                            return result;
-                        }
-                    })
-                    .observeOn(mainThread());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,5 +66,11 @@ public class PaymentManager {
         key = key + r.nextInt();
         key = key.substring(0, 15);
         return key;
+    }
+
+    public interface PaymentCallback {
+
+        void onPaymentFinished(String payStatus);
+
     }
 }

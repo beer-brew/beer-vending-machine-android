@@ -1,12 +1,12 @@
 package beer.brew.vendingmachine.payment.data;
 
-public class AlipayResult implements PayResult {
+public class AlipayStatus implements PayStatus {
 
     private String resultStatus;
     private String result;
     private String memo;
 
-    public AlipayResult(String resultStatus, String result, String memo) {
+    public AlipayStatus(String resultStatus, String result, String memo) {
         this.resultStatus = resultStatus;
         this.result = result;
         this.memo = memo;
@@ -18,15 +18,16 @@ public class AlipayResult implements PayResult {
                 + "};result={" + result + "}";
     }
 
-    public String getResultStatus() {
-        return resultStatus;
-    }
-
     public String getMemo() {
         return memo;
     }
 
     public String getResult() {
         return result;
+    }
+
+    @Override
+    public String getPayStatus() {
+        return resultStatus;
     }
 }
