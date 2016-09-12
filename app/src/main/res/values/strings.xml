@@ -10,7 +10,7 @@
     <string name="action_search">Search</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="action_buy_beer">Buy</string>
+    <string name="action_buy_beer">I want beer</string>
 
     <!-- Error label-->
     <string name="error.msg.invalid_email">This email address is invalid</string>
