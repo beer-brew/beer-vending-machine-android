@@ -1,4 +1,4 @@
-package beer.brew.vendingmachine.data.model;
+package beer.brew.vendingmachine.payment.data;
 
 public interface PayResult {
 

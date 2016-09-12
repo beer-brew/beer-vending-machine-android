@@ -1,4 +1,4 @@
-package beer.brew.vendingmachine.data.model;
+package beer.brew.vendingmachine.payment.data;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -25,27 +25,11 @@ public class AlipayOrder implements Serializable {
     @SerializedName("out_trade_no")
     private final String outTradeNo;
 
-    public AlipayOrder(String timeoutExpress, String productCode, String totalAmount, String body) {
+    public AlipayOrder(String timeoutExpress, String productCode, String totalAmount, String body, String outTradeNo) {
         this.timeoutExpress = timeoutExpress;
         this.productCode = productCode;
         this.totalAmount = totalAmount;
         this.body = body;
-        this.outTradeNo = getOutTradeNo();
-    }
-
-    private static String getOutTradeNo() {
-        SimpleDateFormat format = new SimpleDateFormat("MMddHHmmss", Locale.getDefault());
-        Date date = new Date();
-        String key = format.format(date);
-
-        Random r = new Random();
-        key = key + r.nextInt();
-        key = key.substring(0, 15);
-        return key;
-    }
-
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);
+        this.outTradeNo = outTradeNo;
     }
 }
