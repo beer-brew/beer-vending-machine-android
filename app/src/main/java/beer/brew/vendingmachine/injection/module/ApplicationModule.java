@@ -7,7 +7,6 @@ import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
 
-import beer.brew.vendingmachine.data.remote.BeersService;
 import dagger.Module;
 import dagger.Provides;
 
@@ -60,11 +59,5 @@ public class ApplicationModule {
     @Singleton
     GitHubService provideGitHubService() {
         return GitHubService.Creator.newGitHubService();
-    }
-
-    @Provides
-    @Singleton
-    BeersService providesBeersService() {
-        return BeersService.Creator.newBeersService();
     }
 }
