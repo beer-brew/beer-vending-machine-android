@@ -12,9 +12,9 @@ public class Order implements Serializable {
     private final String orderID;
     private final String description;
     private final String timestamp;
-    private final float price;
+    private final String price;
 
-    public Order(PayType payType, String orderID, String description, float price, String timestamp) {
+    public Order(PayType payType, String orderID, String description, String price, String timestamp) {
         this.payType = payType;
         this.orderID = orderID;
         this.description = description;
@@ -34,7 +34,7 @@ public class Order implements Serializable {
         return description;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
