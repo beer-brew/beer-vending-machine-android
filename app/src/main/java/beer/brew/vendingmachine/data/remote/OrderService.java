@@ -8,7 +8,7 @@ import retrofit.http.Body;
 import retrofit.http.POST;
 import rx.Observable;
 
-public interface PaymentService {
+public interface OrderService {
 
     String ENDPOINT = "";
 
@@ -20,12 +20,12 @@ public interface PaymentService {
 
     class Creator {
 
-        public static PaymentService newPaymentService() {
+        public static OrderService newPaymentService() {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(RibotsService.ENDPOINT)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
-            return retrofit.create(PaymentService.class);
+            return retrofit.create(OrderService.class);
         }
     }
 }
