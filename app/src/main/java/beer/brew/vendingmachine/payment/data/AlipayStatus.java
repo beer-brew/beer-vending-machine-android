@@ -2,6 +2,9 @@ package beer.brew.vendingmachine.payment.data;
 
 public class AlipayStatus implements PayStatus {
 
+    public static final String PAYMENT_FINISHED = "9000";
+    public static final String PAYMENT_UNFINISHED = "6001";
+
     private String resultStatus;
     private String result;
     private String memo;
