@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import beer.brew.vendingmachine.injection.ActivityContext;
-import beer.brew.vendingmachine.payment.PaymentManager;
+import beer.brew.vendingmachine.payment.OrderManager;
 import dagger.Module;
 import dagger.Provides;
 
@@ -29,7 +29,7 @@ public class ActivityModule {
     }
 
     @Provides
-    PaymentManager providesPaymentManager() {
-        return new PaymentManager(mActivity);
+    OrderManager providesPaymentManager() {
+        return new OrderManager(mActivity);
     }
 }
