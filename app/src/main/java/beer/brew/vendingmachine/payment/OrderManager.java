@@ -8,11 +8,8 @@ import java.util.Random;
 
 import beer.brew.vendingmachine.data.model.Beer;
 import beer.brew.vendingmachine.payment.data.AlipayOrder;
-import beer.brew.vendingmachine.payment.data.AlipayResult;
-import rx.Observable;
+import beer.brew.vendingmachine.payment.data.Order;
 import util.sign.SignUtils;
-
-import static beer.brew.vendingmachine.data.model.Beer.Size.SMALL;
 
 public class OrderManager {
 
@@ -25,17 +22,15 @@ public class OrderManager {
         this.context = context;
     }
 
-    public Observable<AlipayResult> getSignedOrder() {
-        try {
-            String orderInfo = generateSignedAlipayOrder(new Beer(SMALL));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return Observable.empty();
+    public Order generateOrder(Beer beer, Order.PayType payType) {
+        return new Order(payType,
+                generateOutTradeNo(),
+                beer.description(),
+                calculatePrice(beer),
+                generateTimestamp());
     }
 
-    private String generateSignedAlipayOrder(Beer beer) throws Exception {
+    public String generateSignedAlipayOrder(Beer beer) throws Exception {
         AlipayOrder order = new AlipayOrder(
                 ALIPAY_ORDER_TIMEOUT,
                 ALIPAY_PRODUCT_CODE,
@@ -68,9 +63,10 @@ public class OrderManager {
         return key;
     }
 
-    public interface PaymentCallback {
-
-        void onPaymentFinished(String payStatus);
-
+    private String generateTimestamp() {
+        SimpleDateFormat format = new SimpleDateFormat("MMddHHmmss", Locale.getDefault());
+        Date date = new Date();
+        String timestamp = format.format(date);
+        return timestamp;
     }
 }

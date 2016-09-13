@@ -4,15 +4,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
-import com.alipay.sdk.app.PayTask;
 import javax.inject.Inject;
+
+import beer.brew.vendingmachine.data.model.Beer;
+import beer.brew.vendingmachine.payment.data.Order;
+import beer.brew.vendingmachine.payment.data.PayResult;
+import beer.brew.vendingmachine.payment.data.PayStatus;
 import butterknife.BindView;
 import beer.brew.vendingmachine.R;
-import beer.brew.vendingmachine.payment.data.AlipayResult;
 import beer.brew.vendingmachine.ui.base.BaseActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.functions.Action1;
+
+import static beer.brew.vendingmachine.data.model.Beer.Size.SMALL;
 
 public class BeerActivity extends BaseActivity implements BeerView {
 
@@ -29,13 +33,9 @@ public class BeerActivity extends BaseActivity implements BeerView {
         super.onCreate(savedInstanceState);
         getActivityComponent().inject(this);
         setContentView(R.layout.activity_beer);
+
         ButterKnife.bind(this);
         beerPresenter.attachView(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
     }
 
     @Override
@@ -45,28 +45,22 @@ public class BeerActivity extends BaseActivity implements BeerView {
     }
 
     @Override
-    public void onPaymentFinished(String payState) {
-        Log.i(TAG, "onPaymentFinished: " + payState);
+    public void showPayStatus(PayStatus payStatus) {
+        Log.i(TAG, "showPayStatus: " + payStatus.getPayStatus());
     }
 
     @Override
-    public void onPaymentSuccess() {
-        Log.i(TAG, "onPaymentSuccess");
-    }
-
-    @Override
-    public void onPaymentFailure() {
-        Log.i(TAG, "onPaymentFailure");
+    public void showPayResult(PayResult payResult) {
+        Log.i(TAG, "showPayResult: " + payResult);
     }
 
     @OnClick(R.id.action_buy_beer)
     public void onBuyClick() {
-        beerPresenter.buy()
-                .subscribe(new Action1<AlipayResult>() {
-                    @Override
-                    public void call(AlipayResult alipayResult) {
-                        onPaymentFinished(alipayResult.getResultStatus());
-                    }
-                });
+        Beer beer = new Beer(SMALL);
+        try {
+            beerPresenter.buy(beer, Order.PayType.ALIPAY);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
