@@ -3,6 +3,7 @@ package beer.brew.vendingmachine.injection.module;
 import android.app.Activity;
 import android.content.Context;
 
+import beer.brew.vendingmachine.data.remote.PaymentProcessor;
 import beer.brew.vendingmachine.injection.ActivityContext;
 import beer.brew.vendingmachine.payment.OrderManager;
 import dagger.Module;
@@ -32,4 +33,10 @@ public class ActivityModule {
     OrderManager providesPaymentManager() {
         return new OrderManager(mActivity);
     }
+
+    @Provides
+    PaymentProcessor providePaymentProcessor() {
+        return new PaymentProcessor(mActivity);
+    }
+
 }

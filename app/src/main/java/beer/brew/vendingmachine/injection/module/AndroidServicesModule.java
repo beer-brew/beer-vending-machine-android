@@ -20,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import javax.inject.Singleton;
 
+import beer.brew.vendingmachine.data.remote.PaymentProcessor;
 import dagger.Module;
 import dagger.Provides;
 

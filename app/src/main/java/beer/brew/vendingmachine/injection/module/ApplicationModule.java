@@ -7,7 +7,7 @@ import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
 
-import beer.brew.vendingmachine.data.remote.PaymentService;
+import beer.brew.vendingmachine.data.remote.OrderService;
 import dagger.Module;
 import dagger.Provides;
 
@@ -64,7 +64,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    PaymentService providePaymentService() {
-        return PaymentService.Creator.newPaymentService();
+    OrderService providePaymentService() {
+        return OrderService.Creator.newOrderService();
     }
 }
