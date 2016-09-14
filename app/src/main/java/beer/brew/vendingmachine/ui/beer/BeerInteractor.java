@@ -1,20 +1,27 @@
 package beer.brew.vendingmachine.ui.beer;
 
+import android.util.Log;
+
 import javax.inject.Inject;
 
 import beer.brew.vendingmachine.data.model.Beer;
+import beer.brew.vendingmachine.data.model.WechatpayOrder;
 import beer.brew.vendingmachine.data.remote.OrderService;
 import beer.brew.vendingmachine.data.remote.PayProcessor;
 import beer.brew.vendingmachine.data.OrderManager;
 import beer.brew.vendingmachine.data.model.PayResult;
 import beer.brew.vendingmachine.data.remote.PayProcessor.PayStatus;
+import beer.brew.vendingmachine.util.GsonUtils;
 import rx.Observable;
+import rx.functions.Action1;
 import rx.functions.Func1;
 
 import static rx.android.schedulers.AndroidSchedulers.mainThread;
 import static rx.schedulers.Schedulers.io;
 
 public class BeerInteractor {
+
+    private static final String TAG = "BeerInteractor";
 
     private OrderService orderService;
     private PayProcessor payProcessor;
@@ -30,12 +37,15 @@ public class BeerInteractor {
     public Observable<PayStatus> pay(Beer beer) throws Exception {
 //        Order order = orderManager.generateOrder(beer, payType);
         return orderService.getOrderInfo()
-                .flatMap(new Func1<String, Observable<PayStatus>>() {
+                .flatMap(new Func1<WechatpayOrder, Observable<PayStatus>>() {
                     @Override
-                    public Observable<PayStatus> call(String orderInfo) {
-                        return payProcessor.pay(orderInfo);
+                    public Observable<PayStatus> call(WechatpayOrder orderInfo) {
+                        Log.i(TAG, "orderInfo: " + orderInfo);
+                        return payProcessor.pay(GsonUtils.toJsonString(orderInfo));
                     }
-                });
+                })
+                .subscribeOn(io())
+                .observeOn(mainThread());
     }
 
     public Observable<PayResult> getPayResult(String orderId) {
