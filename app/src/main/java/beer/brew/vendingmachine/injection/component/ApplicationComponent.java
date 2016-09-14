@@ -31,7 +31,7 @@ public interface ApplicationComponent {
     RibotsService ribotsService();
     SignInService signInService();
     GitHubService gitHubService();
-    OrderService paymentService();
+    OrderService orderService();
     PreferencesHelper preferencesHelper();
     DatabaseHelper databaseHelper();
     DataManager dataManager();
