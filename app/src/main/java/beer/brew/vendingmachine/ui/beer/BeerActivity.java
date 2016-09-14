@@ -7,9 +7,8 @@ import android.widget.Button;
 import javax.inject.Inject;
 
 import beer.brew.vendingmachine.data.model.Beer;
-import beer.brew.vendingmachine.data.remote.PaymentProcessor;
-import beer.brew.vendingmachine.payment.data.Order;
-import beer.brew.vendingmachine.payment.data.PayResult;
+import beer.brew.vendingmachine.data.model.PayResult;
+import beer.brew.vendingmachine.data.remote.PayProcessor.PayStatus;
 import butterknife.BindView;
 import beer.brew.vendingmachine.R;
 import beer.brew.vendingmachine.ui.base.BaseActivity;
@@ -45,7 +44,7 @@ public class BeerActivity extends BaseActivity implements BeerView {
     }
 
     @Override
-    public void showPayStatus(PaymentProcessor.PayStatus payStatus) {
+    public void showPayStatus(PayStatus payStatus) {
         Log.i(TAG, "showPayStatus: " + payStatus.ordinal());
     }
 
@@ -58,7 +57,7 @@ public class BeerActivity extends BaseActivity implements BeerView {
     public void onBuyClick() {
         Beer beer = new Beer(SMALL);
         try {
-            beerPresenter.buy(beer, Order.PayType.WECHAT_PAY);
+            beerPresenter.buy(beer);
         } catch (Exception e) {
             e.printStackTrace();
         }
