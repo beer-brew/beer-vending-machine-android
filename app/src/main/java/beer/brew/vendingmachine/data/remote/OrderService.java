@@ -1,6 +1,6 @@
 package beer.brew.vendingmachine.data.remote;
 
-import beer.brew.vendingmachine.payment.data.PayResult;
+import beer.brew.vendingmachine.data.model.PayResult;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import retrofit.http.Body;
@@ -10,9 +10,9 @@ import rx.Observable;
 
 public interface OrderService {
 
-    String ENDPOINT = "http://103.227.51.161:5150/";
+    String ENDPOINT = "http://103.227.51.161:5150";
 
-    @GET("beerbrew/preorder")
+    @GET("/beerbrew/preorder")
     Observable<String> getOrderInfo();
 
     @POST("")

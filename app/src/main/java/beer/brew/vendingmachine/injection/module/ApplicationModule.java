@@ -64,7 +64,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    OrderService providePaymentService() {
+    OrderService provideOrderService() {
         return OrderService.Creator.newOrderService();
     }
 }

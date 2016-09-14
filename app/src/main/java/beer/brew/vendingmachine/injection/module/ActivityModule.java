@@ -36,7 +36,7 @@ public class ActivityModule {
     }
 
     @Provides
-    PayProcessor providePaymentProcessor() {
+    PayProcessor provideWechatPayProcessor() {
         return new WechatPayProcessor(mActivity);
     }
 
