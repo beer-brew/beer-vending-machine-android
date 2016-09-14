@@ -1,6 +1,7 @@
 package beer.brew.vendingmachine.data.remote;
 
 import beer.brew.vendingmachine.data.model.PayResult;
+import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import retrofit.http.Body;
@@ -23,6 +24,7 @@ public interface OrderService {
         public static OrderService newOrderService() {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(OrderService.ENDPOINT)
+                    .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
             return retrofit.create(OrderService.class);
