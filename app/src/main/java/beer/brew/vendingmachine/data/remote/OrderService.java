@@ -1,6 +1,7 @@
 package beer.brew.vendingmachine.data.remote;
 
 import beer.brew.vendingmachine.data.model.PayResult;
+import beer.brew.vendingmachine.data.model.WechatpayOrder;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
@@ -14,7 +15,7 @@ public interface OrderService {
     String ENDPOINT = "http://103.227.51.161:5150";
 
     @GET("/beerbrew/preorder")
-    Observable<String> getOrderInfo();
+    Observable<WechatpayOrder> getOrderInfo();
 
     @POST("")
     Observable<PayResult> getPayResult(@Body String orderId);
