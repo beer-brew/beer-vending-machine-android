@@ -1,4 +1,4 @@
-package beer.brew.vendingmachine.payment;
+package beer.brew.vendingmachine.data;
 
 import android.content.Context;
 import java.text.SimpleDateFormat;

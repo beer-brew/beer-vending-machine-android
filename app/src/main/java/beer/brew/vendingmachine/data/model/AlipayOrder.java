@@ -1,4 +1,4 @@
-package beer.brew.vendingmachine.payment.data;
+package beer.brew.vendingmachine.data.model;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
