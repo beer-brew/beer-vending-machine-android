@@ -45,7 +45,7 @@ public class BeerActivity extends BaseActivity implements BeerView {
 
     @Override
     public void showPayStatus(PayStatus payStatus) {
-        Log.i(TAG, "showPayStatus: " + payStatus.ordinal());
+        Log.i(TAG, "showPayStatus");
     }
 
     @Override
