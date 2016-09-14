@@ -3,9 +3,10 @@ package beer.brew.vendingmachine.injection.module;
 import android.app.Activity;
 import android.content.Context;
 
-import beer.brew.vendingmachine.data.remote.PaymentProcessor;
+import beer.brew.vendingmachine.data.remote.PayProcessor;
+import beer.brew.vendingmachine.data.remote.WechatPayProcessor;
 import beer.brew.vendingmachine.injection.ActivityContext;
-import beer.brew.vendingmachine.payment.OrderManager;
+import beer.brew.vendingmachine.data.OrderManager;
 import dagger.Module;
 import dagger.Provides;
 
@@ -35,8 +36,8 @@ public class ActivityModule {
     }
 
     @Provides
-    PaymentProcessor providePaymentProcessor() {
-        return new PaymentProcessor(mActivity);
+    PayProcessor providePaymentProcessor() {
+        return new WechatPayProcessor(mActivity);
     }
 
 }
