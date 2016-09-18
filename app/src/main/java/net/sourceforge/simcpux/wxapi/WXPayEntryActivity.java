@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
+import android.util.Log;
 
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
@@ -39,15 +39,18 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
 
     @Override
     public void onReq(BaseReq baseReq) {
-
+        Log.i(TAG, "onReq");
     }
 
     @Override
     public void onResp(BaseResp baseResp) {
+
+        Log.i(TAG, "onResp");
+
         if (baseResp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(R.string.app_tip);
-            builder.setMessage(getString(R.string.pay_result_callback_msg, String.valueOf(baseResp.errCode)));
+            builder.setTitle(R.string.dialog_title);
+            builder.setMessage(getString(R.string.prompt_pay_result_content, String.valueOf(baseResp.errCode)));
             builder.show();
         }
     }

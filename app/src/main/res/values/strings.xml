@@ -31,8 +31,10 @@
 
     <!-- GitHub list Activity-->
     <string name="search_hint">GitHub username</string>
-    <string name="app_tip">prompt</string>
-    <string name="pay_result_callback_msg" formatted="false">pay result: %s</string>
-    <string name="pay_result_tip">Payment result</string>
+
+    <!--WXPay Entry Activity-->
+    <string name="dialog_title">prompt</string>
+    <string name="prompt_pay_result_content" formatted="false">pay result: %s</string>
+    <string name="textview_result_tip">Payment result</string>
 
 </resources>
