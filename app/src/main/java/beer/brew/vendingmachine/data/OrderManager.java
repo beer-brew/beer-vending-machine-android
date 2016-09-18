@@ -44,9 +44,9 @@ public class OrderManager {
     private String calculatePrice(Beer beer) {
         float price = 0;
         switch (beer.getSize()) {
-            case SMALL: price = (float) 3.0; break;
-            case MIDDLE: price = (float) 4.0; break;
-            case BIG: price = (float) 5.0; break;
+            case SMALL: price = 3f; break;
+            case MIDDLE: price = 4f; break;
+            case BIG: price = 5f; break;
             default: break;
         }
         return String.valueOf(price);
