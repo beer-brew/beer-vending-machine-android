@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">自动化测试</string>
+
+    <!-- Title -->
+    <string name="title_activity_signin">登录</string>
+    <string name="title_activity_git_hub_list">GitHub列表</string>
+
+    <!-- Action label-->
+    <string name="action_settings">设置</string>
+    <string name="action_search">查找</string>
+    <string name="action_sign_in">登录或注册</string>
+    <string name="action_sign_in_short">登录</string>
+    <string name="action_buy_beer">购买啤酒</string>
+
+    <!-- Error label-->
+    <string name="error.msg.invalid_email">邮箱地址不合法</string>
+    <string name="error.msg.incorrect_password">密码不正确</string>
+    <string name="error.msg.field_required">缺少必要字段</string>
+    <string name="error.msg.empty_ribots">ribots为空</string>
+    <string name="error.msg.loading_ribots">加载ribots时出错</string>
+    <string name="error.msg.empty_github_user">没有Github用户</string>
+    <string name="error.msg.loading_github_user">加载Github用户是出错</string>
+
+    <string name="dialog_action_ok">好的</string>
+    <string name="dialog_action_cancel">取消</string>
+    <string name="dialog_error_title">抱歉</string>
+
+    <!-- SignIn Activity -->
+    <string name="prompt_email">邮箱</string>
+    <string name="prompt_password">密码 (optional)</string>
+
+    <!-- GitHub list Activity-->
+    <string name="search_hint">GitHub用户名</string>
+
+</resources>

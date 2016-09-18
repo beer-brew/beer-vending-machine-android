@@ -7,6 +7,7 @@ import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
 
+import beer.brew.vendingmachine.data.remote.OrderService;
 import dagger.Component;
 import beer.brew.vendingmachine.data.DataManager;
 import beer.brew.vendingmachine.data.SyncService;
@@ -30,6 +31,7 @@ public interface ApplicationComponent {
     RibotsService ribotsService();
     SignInService signInService();
     GitHubService gitHubService();
+    OrderService orderService();
     PreferencesHelper preferencesHelper();
     DatabaseHelper databaseHelper();
     DataManager dataManager();
