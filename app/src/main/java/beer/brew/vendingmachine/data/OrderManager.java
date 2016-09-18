@@ -7,8 +7,8 @@ import java.util.Locale;
 import java.util.Random;
 
 import beer.brew.vendingmachine.data.model.Beer;
-import beer.brew.vendingmachine.payment.data.AlipayOrder;
-import beer.brew.vendingmachine.payment.data.Order;
+import beer.brew.vendingmachine.data.model.AlipayOrder;
+import beer.brew.vendingmachine.data.model.Order;
 import util.sign.SignUtils;
 
 public class OrderManager {
