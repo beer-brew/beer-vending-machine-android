@@ -10,6 +10,7 @@
     <string name="action_search">Search</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="action_buy_beer">I want beer</string>
     <string name="action_buy">I want beer</string>
 
     <!-- Error label-->
@@ -31,5 +32,10 @@
 
     <!-- GitHub list Activity-->
     <string name="search_hint">GitHub username</string>\
+
+    <!--WXPay Entry Activity-->
+    <string name="dialog_title">prompt</string>
+    <string name="prompt_pay_result_content" formatted="false">pay result: %s</string>
+    <string name="textview_result_tip">Payment result</string>
 
 </resources>
