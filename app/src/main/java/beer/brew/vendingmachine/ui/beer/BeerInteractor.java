@@ -11,9 +11,8 @@ import beer.brew.vendingmachine.data.remote.PayProcessor;
 import beer.brew.vendingmachine.data.OrderManager;
 import beer.brew.vendingmachine.data.model.PayResult;
 import beer.brew.vendingmachine.data.remote.PayProcessor.PayStatus;
-import beer.brew.vendingmachine.util.GsonUtils;
+import beer.brew.vendingmachine.util.JsonUtils;
 import rx.Observable;
-import rx.functions.Action1;
 import rx.functions.Func1;
 
 import static rx.android.schedulers.AndroidSchedulers.mainThread;
@@ -41,7 +40,7 @@ public class BeerInteractor {
                     @Override
                     public Observable<PayStatus> call(WechatpayOrder orderInfo) {
                         Log.i(TAG, "orderInfo: " + orderInfo);
-                        return payProcessor.pay(GsonUtils.toJsonString(orderInfo));
+                        return payProcessor.pay(JsonUtils.toJson(orderInfo));
                     }
                 })
                 .subscribeOn(io())

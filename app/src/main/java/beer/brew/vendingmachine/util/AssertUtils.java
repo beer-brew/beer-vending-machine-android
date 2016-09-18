@@ -21,6 +21,6 @@ public class AssertUtils {
         is.close();
 
         String content = new String(buffer);
-        return GsonUtils.parse(content, clz);
+        return JsonUtils.fromJson(content, clz);
     }
 }

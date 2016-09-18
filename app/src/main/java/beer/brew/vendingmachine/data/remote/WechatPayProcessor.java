@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import beer.brew.vendingmachine.data.model.WechatpayOrder;
-import beer.brew.vendingmachine.util.GsonUtils;
+import beer.brew.vendingmachine.util.JsonUtils;
 import rx.Observable;
 import rx.functions.Func1;
 
@@ -23,7 +23,7 @@ public class WechatPayProcessor extends PayProcessor {
                     @Override
                     public PayStatus call(String content) {
                         IWXAPI api = WXAPIFactory.createWXAPI(getContext(), "wx2989d1fc9d539313");
-                        WechatpayOrder order = GsonUtils.parse(orderInfo, WechatpayOrder.class);
+                        WechatpayOrder order = JsonUtils.fromJson(orderInfo, WechatpayOrder.class);
                         PayReq req = new PayReq();
                         req.appId = order.getAppId();
                         req.partnerId = order.getMchId();
