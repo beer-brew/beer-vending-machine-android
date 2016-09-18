@@ -11,6 +11,7 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_buy_beer">I want beer</string>
+    <string name="action_buy">I want beer</string>
 
     <!-- Error label-->
     <string name="error.msg.invalid_email">This email address is invalid</string>
@@ -30,7 +31,7 @@
     <string name="prompt_password">Password (optional)</string>
 
     <!-- GitHub list Activity-->
-    <string name="search_hint">GitHub username</string>
+    <string name="search_hint">GitHub username</string>\
 
     <!--WXPay Entry Activity-->
     <string name="dialog_title">prompt</string>
