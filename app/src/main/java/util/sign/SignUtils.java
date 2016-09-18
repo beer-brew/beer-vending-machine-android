@@ -5,14 +5,14 @@ import android.text.TextUtils;
 
 import java.util.Map;
 
-import beer.brew.vendingmachine.payment.data.AlipayOrder;
+import beer.brew.vendingmachine.data.model.AlipayOrder;
 import beer.brew.vendingmachine.util.AssertUtils;
-import beer.brew.vendingmachine.util.GsonUtils;
+import beer.brew.vendingmachine.util.JsonUtils;
 
 public class SignUtils {
     public static String sign(Context context, AlipayOrder order) throws Exception {
         AlipayConfig alipayConfig = getAlipayConfigFromAssert(context);
-        Map<String, String> params = OrderInfoUtil.buildOrderParamMap(alipayConfig.getAppId(), GsonUtils.toJsonString(order));
+        Map<String, String> params = OrderInfoUtil.buildOrderParamMap(alipayConfig.getAppId(), JsonUtils.toJson(order));
         String orderParam = OrderInfoUtil.buildOrderParam(params);
         String sign = OrderInfoUtil.getSign(params, alipayConfig.getRsaPrivate());
 
