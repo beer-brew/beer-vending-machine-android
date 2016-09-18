@@ -14,7 +14,7 @@ import rx.schedulers.Schedulers;
 
 public class MainPresenter extends BasePresenter<MainMvpView> {
 
-    public static final String TAG = MainPresenter.class.getSimpleName();
+    public static final String TAG = MainPresenter.class.getName();
 
     private final DataManager mDataManager;
     private Subscription mSubscription;

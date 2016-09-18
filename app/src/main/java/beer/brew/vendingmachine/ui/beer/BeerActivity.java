@@ -19,7 +19,7 @@ import static beer.brew.vendingmachine.data.model.Beer.Size.SMALL;
 
 public class BeerActivity extends BaseActivity implements BeerView {
 
-    private static final String TAG = BeerActivity.class.getSimpleName();
+    private static final String TAG = BeerActivity.class.getName();
 
     @Inject
     BeerPresenter beerPresenter;

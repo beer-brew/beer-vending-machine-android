@@ -21,7 +21,7 @@ import rx.schedulers.Schedulers;
 
 public class SyncService extends Service {
 
-    private final static String TAG = SyncService.class.getSimpleName();
+    private final static String TAG = SyncService.class.getName();
 
     @Inject DataManager mDataManager;
     private Subscription mSubscription;
