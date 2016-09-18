@@ -10,6 +10,9 @@ import beer.brew.vendingmachine.util.AssertUtils;
 import beer.brew.vendingmachine.util.JsonUtils;
 
 public class SignUtils {
+
+    private static final String ASSERT_ALIPAY_CONFIG = "alipay-configuration-sandbox.json";
+
     public static String sign(Context context, AlipayOrder order) throws Exception {
         AlipayConfig alipayConfig = getAlipayConfigFromAssert(context);
         Map<String, String> params = OrderInfoUtil.buildOrderParamMap(alipayConfig.getAppId(), JsonUtils.toJson(order));
@@ -20,7 +23,7 @@ public class SignUtils {
     }
 
     private static AlipayConfig getAlipayConfigFromAssert(Context context) throws Exception {
-        AlipayConfig alipayConfig = AssertUtils.getContentFromAssert(context, AssertUtils.ASSERT_ALIPAY_CONFIG, AlipayConfig.class);
+        AlipayConfig alipayConfig = AssertUtils.getContentFromAssert(context, ASSERT_ALIPAY_CONFIG, AlipayConfig.class);
         if (alipayConfig == null
                 || TextUtils.isEmpty(alipayConfig.getAppId())
                 || TextUtils.isEmpty(alipayConfig.getRsaPrivate())) {
