@@ -11,6 +11,7 @@
     <string name="action_sign_in">登录或注册</string>
     <string name="action_sign_in_short">登录</string>
     <string name="action_buy_beer">购买啤酒</string>
+    <string name="action_buy">购买</string>
 
     <!-- Error label-->
     <string name="error.msg.invalid_email">邮箱地址不合法</string>
@@ -31,5 +32,10 @@
 
     <!-- GitHub list Activity-->
     <string name="search_hint">GitHub用户名</string>
+
+    <!--WXPay Entry Activity-->
+    <string name="dialog_title">提示</string>
+    <string name="prompt_pay_result_content" formatted="false">支付结果: %s</string>
+    <string name="textview_result_tip">支付结果</string>
 
 </resources>
