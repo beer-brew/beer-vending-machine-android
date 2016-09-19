@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 
 import beer.brew.vendingmachine.injection.ActivityContext;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -27,4 +26,13 @@ public class ActivityModule {
     Context providesContext() {
         return mActivity;
     }
+<<<<<<< Updated upstream
+=======
+
+    @Provides
+    PayProcessor provideWechatPayProcessor() {
+        return new WechatPayProcessor(mActivity);
+    }
+
+>>>>>>> Stashed changes
 }
