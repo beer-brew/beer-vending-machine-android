@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class RxIdlingResource implements IdlingResource {
 
-    public static final String TAG = RxIdlingResource.class.getSimpleName();
+    private static final String TAG = RxIdlingResource.class.getSimpleName();
     private final AtomicInteger mActiveSubscriptionsCount = new AtomicInteger(0);
     private ResourceCallback mResourceCallback;
 

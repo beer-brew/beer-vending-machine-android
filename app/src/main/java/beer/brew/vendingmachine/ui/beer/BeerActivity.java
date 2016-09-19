@@ -2,22 +2,24 @@ package beer.brew.vendingmachine.ui.beer;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
-import com.alipay.sdk.app.PayTask;
 import javax.inject.Inject;
 
-import beer.brew.vendingmachine.R;
-import beer.brew.vendingmachine.data.model.AlipayResult;
-import beer.brew.vendingmachine.ui.base.BaseActivity;
+import beer.brew.vendingmachine.data.model.Beer;
+import beer.brew.vendingmachine.data.model.PayResult;
+import beer.brew.vendingmachine.data.remote.PayProcessor.PayStatus;
 import butterknife.BindView;
+import beer.brew.vendingmachine.R;
+import beer.brew.vendingmachine.ui.base.BaseActivity;
 import butterknife.ButterKnife;
-import rx.functions.Action1;
+import butterknife.OnClick;
 
-public class BeerActivity extends BaseActivity implements BeerView, View.OnClickListener {
+import static beer.brew.vendingmachine.data.model.Beer.Size.SMALL;
 
-    private static final String TAG = BeerActivity.class.getSimpleName();
+public class BeerActivity extends BaseActivity implements BeerView {
+
+    private static final String TAG = BeerActivity.class.getName();
 
     @Inject
     BeerPresenter beerPresenter;
@@ -30,15 +32,9 @@ public class BeerActivity extends BaseActivity implements BeerView, View.OnClick
         super.onCreate(savedInstanceState);
         getActivityComponent().inject(this);
         setContentView(R.layout.activity_beer);
+
         ButterKnife.bind(this);
-
         beerPresenter.attachView(this);
-        buyBeerBtn.setOnClickListener(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
     }
 
     @Override
@@ -48,33 +44,22 @@ public class BeerActivity extends BaseActivity implements BeerView, View.OnClick
     }
 
     @Override
-    public void onPaymentFinished(String payState) {
-        Log.i(TAG, "onPaymentFinished: " + payState);
+    public void showPayStatus(PayStatus payStatus) {
+        Log.i(TAG, "showPayStatus");
     }
 
     @Override
-    public void onPaymentSuccess() {
-        Log.i(TAG, "onPaymentSuccess");
+    public void showPayResult(PayResult payResult) {
+        Log.i(TAG, "showPayResult: " + payResult);
     }
 
-    @Override
-    public void onPaymentFailure() {
-        Log.i(TAG, "onPaymentFailure");
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.action_buy_beer:
-                beerPresenter.buy(new PayTask(BeerActivity.this))
-                        .subscribe(new Action1<AlipayResult>() {
-                            @Override
-                            public void call(AlipayResult alipayResult) {
-                                onPaymentFinished(alipayResult.getResultStatus());
-                            }
-                        });
-                break;
-            default: break;
+    @OnClick(R.id.action_buy_beer)
+    public void onBuyClick() {
+        Beer beer = new Beer(SMALL);
+        try {
+            beerPresenter.buy(beer);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
