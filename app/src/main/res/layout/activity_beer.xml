@@ -3,17 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="beer.brew.vendingmachine.ui.beer.BeerActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/action_buy_beer"
-        android:id="@+id/action_buy_beer"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/action_buy_beer"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/TextTypography.Body.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/money_symbol" />
+
+            <TextView
+                android:id="@+id/beer_total_price"
+                style="@style/TextTypography.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="40.00"
+                android:textSize="36sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/action_buy_beer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@color/accent"
+            android:paddingEnd="64dp"
+            android:paddingStart="64dp"
+            android:text="@string/action_buy_beer"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
 </RelativeLayout>
