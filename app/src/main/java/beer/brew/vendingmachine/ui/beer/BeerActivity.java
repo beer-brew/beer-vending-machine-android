@@ -2,15 +2,13 @@ package beer.brew.vendingmachine.ui.beer;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 
 import javax.inject.Inject;
 
+import beer.brew.vendingmachine.R;
 import beer.brew.vendingmachine.data.model.Beer;
 import beer.brew.vendingmachine.data.model.PayResult;
 import beer.brew.vendingmachine.data.remote.PayProcessor.PayStatus;
-import butterknife.BindView;
-import beer.brew.vendingmachine.R;
 import beer.brew.vendingmachine.ui.base.BaseActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,9 +21,6 @@ public class BeerActivity extends BaseActivity implements BeerView {
 
     @Inject
     BeerPresenter beerPresenter;
-
-    @BindView(R.id.action_buy_beer)
-    Button buyBeerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +50,6 @@ public class BeerActivity extends BaseActivity implements BeerView {
 
     @OnClick(R.id.action_buy_beer)
     public void onBuyClick() {
-        Beer beer = new Beer(SMALL);
-        try {
-            beerPresenter.buy(beer);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        beerPresenter.buyBeer();
     }
 }

@@ -38,4 +38,7 @@ public class BeerPresenter extends BasePresenter<BeerView> {
                 });
     }
 
+    public void buyBeer() {
+        beerInteractor.getBeer();
+    }
 }

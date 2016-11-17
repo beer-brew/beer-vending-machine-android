@@ -2,11 +2,10 @@ package beer.brew.vendingmachine.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.text.TextUtils;
 
 import java.io.InputStream;
 import java.io.Serializable;
-import util.sign.AlipayConfig;
+import beer.brew.vendingmachine.util.sign.AlipayConfig;
 
 public class AssertUtils {
 

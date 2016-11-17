@@ -9,7 +9,7 @@ import java.util.Random;
 import beer.brew.vendingmachine.data.model.Beer;
 import beer.brew.vendingmachine.data.model.AlipayOrder;
 import beer.brew.vendingmachine.data.model.Order;
-import util.sign.SignUtils;
+import beer.brew.vendingmachine.util.sign.SignUtils;
 
 public class OrderManager {
 

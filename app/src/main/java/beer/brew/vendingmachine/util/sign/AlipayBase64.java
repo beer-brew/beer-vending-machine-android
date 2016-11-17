@@ -1,4 +1,4 @@
-package util.sign;
+package beer.brew.vendingmachine.util.sign;
 
 public final class AlipayBase64 {
 

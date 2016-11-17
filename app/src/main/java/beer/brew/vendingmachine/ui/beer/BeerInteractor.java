@@ -52,4 +52,8 @@ public class BeerInteractor {
                 .subscribeOn(io())
                 .observeOn(mainThread());
     }
+
+    public void getBeer() {
+
+    }
 }

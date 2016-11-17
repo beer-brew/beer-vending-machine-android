@@ -1,4 +1,4 @@
-package util.sign;
+package beer.brew.vendingmachine.util.sign;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

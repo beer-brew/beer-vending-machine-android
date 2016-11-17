@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="beer.brew.vendingmachine.ui.beer.BeerActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <beer.brew.vendingmachine.ui.widgets.CircleImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                app:image_aspect_ratio="@fraction/image_ratio" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/beer_name"
+                    style="@style/TextTypography.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PUNK IPA" />
+
+                <TextView
+                    android:id="@+id/beer_info"
+                    style="@style/TextTypography.Subhead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/beer_name"
+                    android:text="POST MODERN CLASSIC" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@id/beer_info">
+
+                    <include layout="@layout/money_symbol_layout" />
+
+                    <TextView
+                        android:id="@+id/beer_price"
+                        style="@style/TextTypography.Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="20.00"
+                        android:textColor="@color/accent"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="64dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,16 +80,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true"
             android:layout_toStartOf="@+id/action_buy_beer"
             android:orientation="horizontal"
-            android:padding="12dp">
+            android:paddingBottom="6dp"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp">
 
-            <TextView
-                style="@style/TextTypography.Body.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/money_symbol" />
+            <include layout="@layout/money_symbol_layout" />
 
             <TextView
                 android:id="@+id/beer_total_price"
@@ -31,7 +95,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="40.00"
-                android:textSize="36sp"/>
+                android:layout_marginStart="3dp"
+                android:textColor="@color/accent"
+                android:textSize="40sp"
+                android:textStyle="normal" />
 
         </LinearLayout>
 
@@ -46,7 +113,7 @@
             android:text="@string/action_buy_beer"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
     </RelativeLayout>
 
 </RelativeLayout>

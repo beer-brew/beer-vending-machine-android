@@ -1,4 +1,4 @@
-package util.sign;
+package beer.brew.vendingmachine.util.sign;
 
 import android.content.Context;
 import android.text.TextUtils;
