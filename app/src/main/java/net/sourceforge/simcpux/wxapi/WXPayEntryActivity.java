@@ -15,7 +15,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 import beer.brew.vendingmachine.R;
 
-public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
+public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 
     private static final String TAG = "MicroMsg.SDKSample.WXPayEntryActivity";
 

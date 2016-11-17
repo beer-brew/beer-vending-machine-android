@@ -1,4 +1,6 @@
-package beer.brew.vendingmachine.ui.widgets.loopviewpager;/*
+package beer.brew.vendingmachine.ui.widgets.loopviewpager;
+
+/*
  * Copyright (C) 2013 Leszek Mzyk
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

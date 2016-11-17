@@ -1,13 +1,8 @@
 package beer.brew.vendingmachine.data.model;
 
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
 
 public class AlipayOrder implements Serializable {
     @SerializedName("timeout_express")

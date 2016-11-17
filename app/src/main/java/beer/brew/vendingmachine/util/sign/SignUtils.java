@@ -1,12 +1,10 @@
 package beer.brew.vendingmachine.util.sign;
 
 import android.content.Context;
-import android.text.TextUtils;
 
 import java.util.Map;
 
 import beer.brew.vendingmachine.data.model.AlipayOrder;
-import beer.brew.vendingmachine.util.AssertUtils;
 import beer.brew.vendingmachine.util.JsonUtils;
 
 public class SignUtils {
@@ -23,13 +21,6 @@ public class SignUtils {
     }
 
     private static AlipayConfig getAlipayConfigFromAssert(Context context) throws Exception {
-        AlipayConfig alipayConfig = AssertUtils.getContentFromAssert(context, ASSERT_ALIPAY_CONFIG, AlipayConfig.class);
-        if (alipayConfig == null
-                || TextUtils.isEmpty(alipayConfig.getAppId())
-                || TextUtils.isEmpty(alipayConfig.getRsaPrivate())) {
-            throw new Exception("AlipayConfig should not be null!");
-        }
-
-        return alipayConfig;
+        return null;
     }
 }
