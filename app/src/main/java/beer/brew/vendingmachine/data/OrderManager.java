@@ -1,14 +1,15 @@
 package beer.brew.vendingmachine.data;
 
 import android.content.Context;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
-import beer.brew.vendingmachine.data.model.Beer;
 import beer.brew.vendingmachine.data.model.AlipayOrder;
 import beer.brew.vendingmachine.data.model.Order;
+import beer.brew.vendingmachine.data.model.beer.Beer;
 import beer.brew.vendingmachine.util.sign.SignUtils;
 
 public class OrderManager {
@@ -25,7 +26,7 @@ public class OrderManager {
     public Order generateOrder(Beer beer, Order.PayType payType) {
         return new Order(payType,
                 generateOutTradeNo(),
-                beer.description(),
+                beer.getDescription(),
                 calculatePrice(beer),
                 generateTimestamp());
     }
@@ -35,7 +36,7 @@ public class OrderManager {
                 ALIPAY_ORDER_TIMEOUT,
                 ALIPAY_PRODUCT_CODE,
                 calculatePrice(beer),
-                beer.description(),
+                beer.getDescription(),
                 generateOutTradeNo());
 
         return SignUtils.sign(context, order);
@@ -43,7 +44,7 @@ public class OrderManager {
 
     private String calculatePrice(Beer beer) {
         float price = 0;
-        switch (beer.getSize()) {
+        switch (beer.getBeerSize()) {
             case SMALL: price = 3f; break;
             case MIDDLE: price = 4f; break;
             case BIG: price = 5f; break;

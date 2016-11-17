@@ -2,22 +2,26 @@ package beer.brew.vendingmachine.ui.beer;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
 import beer.brew.vendingmachine.R;
-import beer.brew.vendingmachine.data.model.Beer;
 import beer.brew.vendingmachine.data.model.PayResult;
+import beer.brew.vendingmachine.data.model.beer.Beer;
 import beer.brew.vendingmachine.data.remote.PayProcessor.PayStatus;
 import beer.brew.vendingmachine.ui.base.BaseActivity;
+import beer.brew.vendingmachine.ui.widgets.CircleImageView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static beer.brew.vendingmachine.data.model.Beer.Size.SMALL;
 
 public class BeerActivity extends BaseActivity implements BeerView {
 
     private static final String TAG = BeerActivity.class.getName();
+
+    @BindView(R.id.beer_circle_image_view)
+    CircleImageView circleImageView;
 
     @Inject
     BeerPresenter beerPresenter;
@@ -30,6 +34,11 @@ public class BeerActivity extends BaseActivity implements BeerView {
 
         ButterKnife.bind(this);
         beerPresenter.attachView(this);
+        initData();
+    }
+
+    private void initData() {
+        beerPresenter.loadData();
     }
 
     @Override
@@ -46,6 +55,16 @@ public class BeerActivity extends BaseActivity implements BeerView {
     @Override
     public void showPayResult(PayResult payResult) {
         Log.i(TAG, "showPayResult: " + payResult);
+    }
+
+    @Override
+    public void showBeerInfo(Beer beer) {
+        circleImageView.setImageUri(beer.getImageUrls(), true);
+    }
+
+    @Override
+    public void showError() {
+        Toast.makeText(this, getText(R.string.error_msg_field_required), Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.action_buy_beer)

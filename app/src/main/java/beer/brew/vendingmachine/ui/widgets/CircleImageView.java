@@ -10,7 +10,6 @@ import java.util.List;
 
 import beer.brew.vendingmachine.R;
 import beer.brew.vendingmachine.ui.widgets.loopviewpager.LoopViewPager;
-import beer.brew.vendingmachine.util.ImageLoader;
 
 
 public class CircleImageView extends LoopViewPager {
@@ -49,8 +48,8 @@ public class CircleImageView extends LoopViewPager {
         setAdapter(imageViewPagerAdapter);
     }
 
-    public void setImageUri(List<String> images, ImageLoader imageLoader, boolean resetPosition) {
-        imageViewPagerAdapter.loadImageUri(images, imageLoader);
+    public void setImageUri(List<String> images, boolean resetPosition) {
+        imageViewPagerAdapter.loadImageUri(images);
         getAdapter().notifyDataSetChanged();
         if (resetPosition) {
             setCurrentItem(0, false);

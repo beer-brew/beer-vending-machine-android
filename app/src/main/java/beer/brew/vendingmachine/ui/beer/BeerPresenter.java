@@ -2,13 +2,13 @@ package beer.brew.vendingmachine.ui.beer;
 
 import javax.inject.Inject;
 
-import beer.brew.vendingmachine.data.model.Beer;
+import beer.brew.vendingmachine.data.model.beer.Beer;
 import beer.brew.vendingmachine.data.remote.PayProcessor;
 import beer.brew.vendingmachine.data.model.PayResult;
 import beer.brew.vendingmachine.ui.base.BasePresenter;
 import rx.functions.Action1;
 
-public class BeerPresenter extends BasePresenter<BeerView> {
+public class BeerPresenter extends BasePresenter<BeerView> implements BeerInteractor.Callback {
 
     @Inject
     BeerInteractor beerInteractor;
@@ -39,6 +39,20 @@ public class BeerPresenter extends BasePresenter<BeerView> {
     }
 
     public void buyBeer() {
-        beerInteractor.getBeer();
+        beerInteractor.buyBeer();
+    }
+
+    public void loadData() {
+        beerInteractor.getBeerInfo(this);
+    }
+
+    @Override
+    public void onLoadCompleted(Beer beer) {
+        getMvpView().showBeerInfo(beer);
+    }
+
+    @Override
+    public void onLoadFailed() {
+        getMvpView().showError();
     }
 }

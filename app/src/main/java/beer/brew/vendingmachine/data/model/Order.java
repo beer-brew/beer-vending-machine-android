@@ -1,10 +1,6 @@
 package beer.brew.vendingmachine.data.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
-
-import beer.brew.vendingmachine.data.model.Beer;
 
 public class Order implements Serializable {
 

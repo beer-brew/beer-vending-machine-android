@@ -1,6 +1,8 @@
 package beer.brew.vendingmachine.util;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import java.io.Reader;
 import java.lang.reflect.Type;
 
