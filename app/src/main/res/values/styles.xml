@@ -44,10 +44,15 @@
         <item name="android:textSize">@dimen/text_size_subhead</item>
     </style>
 
-    <style name="TextTypography.Body"></style>
+    <style name="TextTypography.Body" />
 
     <style name="TextTypography.Body.Large">
         <item name="android:textSize">@dimen/text_size_body_large</item>
+    </style>
+
+    <style name="TextTypography.Body.Large.Medium">
+        <item name="android:textStyle">@integer/font_textStyle_medium</item>
+        <item name="android:fontFamily">@string/font_fontFamily_medium</item>
     </style>
 
     <style name="TextTypography.Body.Small">

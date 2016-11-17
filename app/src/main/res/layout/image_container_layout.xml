@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher" />
+
+    <RelativeLayout
+        android:id="@+id/image_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/item_margin"
+        android:layout_marginEnd="@dimen/item_margin"
+        android:background="@drawable/image_badge_bg"
+        android:minHeight="42dp"
+        android:minWidth="42dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/image_badge_numerator"
+            style="@style/TextTypography.Body.Large.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/image_badge_denominator"
+            style="@style/TextTypography.Body.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/image_badge_numerator"
+            android:textColor="@color/white"
+            tools:text="/6" />
+    </RelativeLayout>
+
+</RelativeLayout>
