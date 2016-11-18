@@ -7,7 +7,6 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 import beer.brew.vendingmachine.StartupApplication;
-import beer.brew.vendingmachine.data.DataManager;
 import beer.brew.vendingmachine.injection.component.DaggerTestComponent;
 import beer.brew.vendingmachine.injection.component.TestComponent;
 import beer.brew.vendingmachine.injection.module.TestAndroidServicesModule;
@@ -36,10 +35,6 @@ public class TestComponentRule implements TestRule {
 
     public Context getContext() {
         return mContext;
-    }
-
-    public DataManager getMockDataManager() {
-        return mTestComponent.dataManager();
     }
 
     @Override

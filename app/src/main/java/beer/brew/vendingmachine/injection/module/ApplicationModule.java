@@ -7,14 +7,12 @@ import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
 
-import beer.brew.vendingmachine.data.remote.OrderService;
-import dagger.Module;
-import dagger.Provides;
-
 import beer.brew.vendingmachine.data.remote.GitHubService;
-import beer.brew.vendingmachine.data.remote.RibotsService;
+import beer.brew.vendingmachine.data.remote.OrderService;
 import beer.brew.vendingmachine.data.remote.SignInService;
 import beer.brew.vendingmachine.injection.ApplicationContext;
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Provide application-level dependencies.
@@ -42,12 +40,6 @@ public class ApplicationModule {
     @Singleton
     Bus provideEventBus() {
         return new Bus();
-    }
-
-    @Provides
-    @Singleton
-    RibotsService provideRibotsService() {
-        return RibotsService.Creator.newRibotsService();
     }
 
     @Provides

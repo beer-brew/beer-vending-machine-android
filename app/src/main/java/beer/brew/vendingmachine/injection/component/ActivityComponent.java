@@ -4,9 +4,7 @@ import beer.brew.vendingmachine.injection.PerActivity;
 import beer.brew.vendingmachine.injection.module.ActivityModule;
 import beer.brew.vendingmachine.ui.beer.BeerActivity;
 import beer.brew.vendingmachine.ui.github.GitHubListActivity;
-import beer.brew.vendingmachine.ui.main.MainActivity;
 import beer.brew.vendingmachine.ui.signin.SignInActivity;
-
 import dagger.Component;
 
 /**
@@ -15,8 +13,6 @@ import dagger.Component;
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
-
-    void inject(MainActivity mainActivity);
 
     void inject(SignInActivity signInActivity);
 
