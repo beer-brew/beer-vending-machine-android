@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">自动化测试</string>
+    <string name="app_name">自制啤酒贩卖</string>
 
     <!-- Title -->
     <string name="title_activity_signin">登录</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Auto Test</string>
+    <string name="app_name">Beer Brew Vending</string>
 
     <!-- Title -->
     <string name="title_activity_signin">Sign in</string>
